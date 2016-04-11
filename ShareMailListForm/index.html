@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<head>
-
+<head ng-app="mailShareList" data-framework="typescript" xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8"/>
+    <title>Mail list module test page</title>
+    <style>[ng-cloak] { display: none; }</style>
 </head>
-<body ng-app="">
+<body >
+    <section class="">
+        <emails-editor  >
 
+        </emails-editor>
+        <button ng-click="addEmails()">add random email</button>
+        <button ng-click="getEmailsCount()">get emails count</button>
+    </section>
 </body>
 </html>
