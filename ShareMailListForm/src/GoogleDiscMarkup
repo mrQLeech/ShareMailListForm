@@ -1,0 +1,48 @@
+
+<div class="apps-share-chips-editor">
+    <input class="apps-share-chips-editor-hidden-input" aria-hidden="true" tabindex="-1" aria-activedescendant=":1i">
+    <div id=":1i" role="group">
+    </div>
+<span class="apps-share-chips-container">
+	<span class="apps-share-chips-chip" id=":25" aria-selected="false" tabindex="-1" style="-webkit-user-select: none;">
+		<div class="apps-share-chips-icon-wrapper">
+			<span class="apps-share-chips-icon apps-share-chips-icon-sprite apps-share-chips-icon-sprite-person">
+			</span>
+        </div>
+		<div class="apps-share-chips-chip-content" style="max-width: 259px;">a@d.ru
+        </div>
+		<div class="apps-share-chips-icon-wrapper">
+			<span class="apps-share-chips-icon apps-share-chips-icon-x">
+			</span>
+        </div>
+	</span>
+	<span class="apps-share-chips-chip" id=":28" aria-selected="false" tabindex="-1" style="-webkit-user-select: none;">
+		<div class="apps-share-chips-icon-wrapper">
+			<span class="apps-share-chips-icon apps-share-chips-icon-sprite apps-share-chips-icon-sprite-email">
+			</span>
+        </div>
+		<div class="apps-share-chips-chip-content" style="max-width: 259px;">adfa@afd.ru
+        </div>
+		<div class="apps-share-chips-icon-wrapper">
+			<span class="apps-share-chips-icon apps-share-chips-icon-x">
+			</span>
+        </div>
+	</span>
+	<span class="apps-share-chips-chip" id=":29" aria-selected="false" tabindex="-1" style="-webkit-user-select: none;">
+		<div class="apps-share-chips-icon-wrapper">
+			<span class="apps-share-chips-icon apps-share-chips-icon-sprite apps-share-chips-icon-sprite-email">
+			</span>
+        </div>
+		<div class="apps-share-chips-chip-content" style="max-width: 259px;">sdll@aslf.com
+        </div>
+		<div class="apps-share-chips-icon-wrapper">
+			<span class="apps-share-chips-icon apps-share-chips-icon-x">
+			</span>
+        </div>
+	</span>
+</span>
+<textarea class="apps-share-chips-input" role="combobox" aria-autocomplete="list"
+          placeholder="Добавьте пользователей..." aria-label="Добавьте пользователей..."
+          style="width: 170px;" aria-haspopup="false" aria-expanded="false">
+</textarea>
+</div>
