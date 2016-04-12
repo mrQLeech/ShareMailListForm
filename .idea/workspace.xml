@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f9eeea8-69c5-4eb8-9c64-0882527e57fc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/_refs.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/controllers/EmailEditorCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/controllers/EmailEditorCtrl.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/controllers/EmailEditorCtrl.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShareMailListForm/src/styles/emailsEditor.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/_app.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/index.html" afterPath="$PROJECT_DIR$/ShareMailListForm/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/Application.js" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/Application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/Application.js.map" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/Application.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/Application.ts" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/Application.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/models/eMailModel.js" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/models/eMailModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/models/eMailModel.js.map" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/models/eMailModel.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/models/eMailModel.ts" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/models/eMailModel.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoAngularExample/js/Application.js" afterPath="$PROJECT_DIR$/ToDoAngularExample/js/Application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ToDoAngularExample/js/Application.js.map" afterPath="$PROJECT_DIR$/ToDoAngularExample/js/Application.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/_app.js" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/_refs.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ShareMailListForm/scripts/_app.ts" afterPath="$PROJECT_DIR$/ShareMailListForm/scripts/_refs.ts" />
-    </list>
+    <list default="true" id="0f9eeea8-69c5-4eb8-9c64-0882527e57fc" name="Default" comment="" />
     <ignored path="typescript-angular.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -768,7 +749,7 @@
     <option name="totallyTimeSpent" value="716000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24743778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
