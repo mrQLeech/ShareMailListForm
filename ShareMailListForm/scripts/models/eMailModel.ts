@@ -1,25 +1,30 @@
 /// <reference path='../_app.ts' />
 
-
 module testAppModule{
+
     'use strict';
 
-    class IEMailItem{
-        protected _eMail : string;
-        get EMail():string {
-            return this._eMail;
-        }
-        public isValid: boolean = function(){};
+
+    interface IEMailItem{
+         isValid() : boolean;
     }
 
     class EMailModel implements IEMailItem{
-        constructor(eMail:string){
-            _eMail = eMail;
+        _eMail : string;
+
+        EMail() : string {
+            return undefined;
+        }
+        constructor(eMail : string){
+             this._eMail = eMail;
         }
 
-        public isValid: boolean = function(){
-            this.EMail
+        isValid():boolean {
+
+            let regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            return regExp.test(this._eMail);
         }
+
     }
 
 
