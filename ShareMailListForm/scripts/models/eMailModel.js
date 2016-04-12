@@ -1,6 +1,6 @@
-/// <reference path='../_app.ts' />
-var testAppModule;
-(function (testAppModule) {
+/// <reference path='../_refs.ts' />
+var EmailEditorModule;
+(function (EmailEditorModule) {
     'use strict';
     var EMailModel = (function () {
         function EMailModel(eMail) {
@@ -15,5 +15,6 @@ var testAppModule;
         };
         return EMailModel;
     })();
-})(testAppModule || (testAppModule = {}));
+    EmailEditorModule.EMailModel = EMailModel;
+})(EmailEditorModule || (EmailEditorModule = {}));
 //# sourceMappingURL=eMailModel.js.map

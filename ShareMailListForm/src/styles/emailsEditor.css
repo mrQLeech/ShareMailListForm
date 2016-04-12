@@ -1,0 +1,39 @@
+div.mail-list {
+    width:300px;
+    height:200px;
+    min-width:50px;
+    min-height:50px;
+    border: 1px solid black;
+    sizable: true;
+    resize: both;
+    overflow: auto;
+}
+
+div.mail-item{
+    height:16px;
+    max-width: 200px;
+    float:left;
+    border: 1px solid blue;
+    margin: 3px;
+    border-radius: 7px;
+    padding: 2px;
+}
+
+div.mail-list textarea{
+
+    height: 16px;
+    width: 250px;
+    padding: 5px 0 0 0;
+    margin: 3px 0 3px 5px;
+    resize: none;
+    overflow: hidden;
+    -webkit-appearance: none;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    border: none;
+    background-color: transparent;
+}
+
+textarea:focus{
+    outline: transparent none;
+}

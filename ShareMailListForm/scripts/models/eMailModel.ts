@@ -1,15 +1,16 @@
-/// <reference path='../_app.ts' />
+/// <reference path='../_refs.ts' />
 
-module testAppModule{
+module EmailEditorModule{
 
     'use strict';
 
 
-    interface IEMailItem{
-         isValid() : boolean;
+    export interface IEMailItem{
+
+        isValid() : boolean;
     }
 
-    class EMailModel implements IEMailItem{
+    export class EMailModel implements IEMailItem{
         _eMail : string;
 
         EMail() : string {

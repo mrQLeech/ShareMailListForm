@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<head ng-app="testApp" data-framework="typescript" xmlns="http://www.w3.org/1999/html">
+<head ng-app="EmailEditorModule" data-framework="typescript" xmlns="http://www.w3.org/1999/html">
     <meta charset="utf-8"/>
     <title>Mail list module test page</title>
     <style>[ng-cloak] { display: none; }</style>
 </head>
 <body >
     <section class="">
-        <emails-editor  >
-
+        <emails-editor ng-controller="EmailEditorCtrl">
+            <div class="mail-list">
+                <div class="mail-item">
+                    <span>test@inbox.ru</span>
+                    <div class="btn-close">
+                    </div>
+                </div>
+                <div class="mail-item">
+                    <span>test@inbox.ru</span>
+                    <div class="btn-close">
+                    </div>
+                </div>
+                <div class="mail-item">
+                    <span>test@inbox.ru</span>
+                    <div class="btn-close">
+                    </div>
+                </div>
+                <textarea class="new-mail-input"  placeholder="Введите адрес электронной почты..." ></textarea>
+            </div>
         </emails-editor>
        <!-- <button ng-click="addEmails()">add random email</button>
         <button ng-click="getEmailsCount()">get emails count</button>

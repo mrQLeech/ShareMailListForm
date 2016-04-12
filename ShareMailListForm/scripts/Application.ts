@@ -1,8 +1,9 @@
-/// <reference path='_app.ts' />
+/// <reference path='_refs.ts' />
 
 
-module testAppModule{
+module EmailEditorModule{
     'use strict';
 
-    var testApp = angular.module('testapp', []);
+    var testApp = angular.module('EmailEditorModule', []).
+                        controller('EmailEditorCtrl', EmailEditorCtrl);
 }
