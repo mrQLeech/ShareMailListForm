@@ -1,4 +1,4 @@
-/// <reference path='script_map.ts' />
+/// <reference path='_app.ts' />
 
 
 module testAppModule{
