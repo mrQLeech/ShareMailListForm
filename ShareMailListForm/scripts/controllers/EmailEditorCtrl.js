@@ -6,8 +6,16 @@ var EmailEditorModule;
 (function (EmailEditorModule) {
     'use strict';
     var EmailEditorCtrl = (function () {
-        function EmailEditorCtrl() {
+        // dependencies are injected via AngularJS $injector
+        // controller's name is registered in Application.ts and specified from ng-controller attribute in index.html
+        function EmailEditorCtrl($scope, $location) {
+            this.$scope = $scope;
+            this.$location = $location;
         }
+        EmailEditorCtrl.$inject = [
+            '$scope',
+            '$location'
+        ];
         return EmailEditorCtrl;
     })();
     EmailEditorModule.EmailEditorCtrl = EmailEditorCtrl;
