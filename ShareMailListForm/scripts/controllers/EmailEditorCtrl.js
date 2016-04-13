@@ -1,23 +1,43 @@
 /// <reference path='../_refs.ts' />
-/**
- * Created by Krasnov on 13.04.2016 1:18.
- */
-var EmailEditorModule;
-(function (EmailEditorModule) {
+var EmailEditorMod;
+(function (EmailEditorMod) {
     'use strict';
-    var EmailEditorCtrl = (function () {
+    class EmailEditorCtrl {
         // dependencies are injected via AngularJS $injector
         // controller's name is registered in Application.ts and specified from ng-controller attribute in index.html
-        function EmailEditorCtrl($scope, $location) {
+        constructor($scope) {
             this.$scope = $scope;
-            this.$location = $location;
+            this.mailList = [];
+            this.addEMail("test1@t.ru");
+            this.addEMail("test2@t.ru");
+            this.addEMail("test3@t.ru");
         }
-        EmailEditorCtrl.$inject = [
-            '$scope',
-            '$location'
-        ];
-        return EmailEditorCtrl;
-    })();
-    EmailEditorModule.EmailEditorCtrl = EmailEditorCtrl;
-})(EmailEditorModule || (EmailEditorModule = {}));
+        addEMail(eMail) {
+            if (eMail) {
+                let mail = new EmailEditorMod.EMailModel(eMail);
+                if (this.mailList.indexOf(mail) < 0) {
+                    this.mailList.push(mail);
+                }
+            }
+            this.$scope.emails = this.mailList;
+        }
+        removeMail(eMail) {
+            let mList = this.mailList;
+            let rEl;
+            for (let i = mList.length - 1; i >= 0; i--) {
+                let el = mList[i];
+                if (el.get() == eMail) {
+                    this.mailList.slice(i);
+                }
+            }
+            this.$scope.emails = this.mailList;
+        }
+        parseEmails(eMailString) {
+        }
+    }
+    EmailEditorCtrl.$inject = [
+        '$scope'
+    ];
+    EmailEditorMod.EmailEditorCtrl = EmailEditorCtrl;
+})(EmailEditorMod || (EmailEditorMod = {}));
 //# sourceMappingURL=EmailEditorCtrl.js.map

@@ -7,10 +7,10 @@ var todos;
      */
     function todoFocus($timeout) {
         return {
-            link: function ($scope, element, attributes) {
-                $scope.$watch(attributes.todoFocus, function (newval) {
+            link: ($scope, element, attributes) => {
+                $scope.$watch(attributes.todoFocus, newval => {
                     if (newval) {
-                        $timeout(function () { return element[0].focus(); }, 0, false);
+                        $timeout(() => element[0].focus(), 0, false);
                     }
                 });
             }

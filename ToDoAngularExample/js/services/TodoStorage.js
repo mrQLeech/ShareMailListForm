@@ -5,18 +5,17 @@ var todos;
     /**
      * Services that persists and retrieves TODOs from localStorage.
      */
-    var TodoStorage = (function () {
-        function TodoStorage() {
+    class TodoStorage {
+        constructor() {
             this.STORAGE_ID = 'todos-angularjs-typescript';
         }
-        TodoStorage.prototype.get = function () {
+        get() {
             return JSON.parse(localStorage.getItem(this.STORAGE_ID) || '[]');
-        };
-        TodoStorage.prototype.put = function (todos) {
+        }
+        put(todos) {
             localStorage.setItem(this.STORAGE_ID, JSON.stringify(todos));
-        };
-        return TodoStorage;
-    })();
+        }
+    }
     todos_1.TodoStorage = TodoStorage;
 })(todos || (todos = {}));
 //# sourceMappingURL=TodoStorage.js.map

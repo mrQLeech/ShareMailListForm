@@ -3,7 +3,7 @@
 /// <reference path='./interfaces/IEMailItem.ts' />
 /// <reference path='./interfaces/IEMailScope.ts' />
 /// <reference path='./models/EMailModel.ts' />
+/// <reference path='./directives/EMailInput.ts' />
 /// <reference path='./controllers/EmailEditorCtrl.ts' />
 /// <reference path='Application.ts' />
 
-/// <reference path='Application.ts' />

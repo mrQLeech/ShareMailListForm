@@ -7,11 +7,10 @@ var todos;
      * - retrieves and persists the model via the todoStorage service
      * - exposes the model to the template and provides event handlers
      */
-    var TodoCtrl = (function () {
+    class TodoCtrl {
         // dependencies are injected via AngularJS $injector
         // controller's name is registered in Application.ts and specified from ng-controller attribute in index.html
-        function TodoCtrl($scope, $location, todoStorage, filterFilter) {
-            var _this = this;
+        constructor($scope, $location, todoStorage, filterFilter) {
             this.$scope = $scope;
             this.$location = $location;
             this.todoStorage = todoStorage;
@@ -24,41 +23,41 @@ var todos;
             $scope.vm = this;
             // watching for events/changes in scope, which are caused by view/user input
             // if you subscribe to scope or event with lifetime longer than this controller, make sure you unsubscribe.
-            $scope.$watch('todos', function () { return _this.onTodos(); }, true);
-            $scope.$watch('location.path()', function (path) { return _this.onPath(path); });
+            $scope.$watch('todos', () => this.onTodos(), true);
+            $scope.$watch('location.path()', path => this.onPath(path));
             if ($location.path() === '')
                 $location.path('/');
             $scope.location = $location;
         }
-        TodoCtrl.prototype.onPath = function (path) {
+        onPath(path) {
             this.$scope.statusFilter = (path === '/active') ?
                 { completed: false } : (path === '/completed') ?
                 { completed: true } : {};
-        };
-        TodoCtrl.prototype.onTodos = function () {
+        }
+        onTodos() {
             this.$scope.remainingCount = this.filterFilter(this.todos, { completed: false }).length;
             this.$scope.doneCount = this.todos.length - this.$scope.remainingCount;
             this.$scope.allChecked = !this.$scope.remainingCount;
             this.todoStorage.put(this.todos);
-        };
-        TodoCtrl.prototype.addTodo = function () {
+        }
+        addTodo() {
             var newTodo = this.$scope.newTodo.trim();
             if (!newTodo.length) {
                 return;
             }
             this.todos.push(new todos.TodoItem(newTodo, false));
             this.$scope.newTodo = '';
-        };
-        TodoCtrl.prototype.editTodo = function (todoItem) {
+        }
+        editTodo(todoItem) {
             this.$scope.editedTodo = todoItem;
             // Clone the original todo in case editing is cancelled.
             this.$scope.originalTodo = angular.extend({}, todoItem);
-        };
-        TodoCtrl.prototype.revertEdits = function (todoItem) {
+        }
+        revertEdits(todoItem) {
             this.todos[this.todos.indexOf(todoItem)] = this.$scope.originalTodo;
             this.$scope.reverted = true;
-        };
-        TodoCtrl.prototype.doneEditing = function (todoItem) {
+        }
+        doneEditing(todoItem) {
             this.$scope.editedTodo = null;
             this.$scope.originalTodo = null;
             if (this.$scope.reverted) {
@@ -70,28 +69,27 @@ var todos;
             if (!todoItem.title) {
                 this.removeTodo(todoItem);
             }
-        };
-        TodoCtrl.prototype.removeTodo = function (todoItem) {
+        }
+        removeTodo(todoItem) {
             this.todos.splice(this.todos.indexOf(todoItem), 1);
-        };
-        TodoCtrl.prototype.clearDoneTodos = function () {
-            this.$scope.todos = this.todos = this.todos.filter(function (todoItem) { return !todoItem.completed; });
-        };
-        TodoCtrl.prototype.markAll = function (completed) {
-            this.todos.forEach(function (todoItem) { todoItem.completed = completed; });
-        };
-        // $inject annotation.
-        // It provides $injector with information about dependencies to be injected into constructor
-        // it is better to have it close to the constructor, because the parameters must match in count and type.
-        // See http://docs.angularjs.org/guide/di
-        TodoCtrl.$inject = [
-            '$scope',
-            '$location',
-            'todoStorage',
-            'filterFilter'
-        ];
-        return TodoCtrl;
-    })();
+        }
+        clearDoneTodos() {
+            this.$scope.todos = this.todos = this.todos.filter(todoItem => !todoItem.completed);
+        }
+        markAll(completed) {
+            this.todos.forEach(todoItem => { todoItem.completed = completed; });
+        }
+    }
+    // $inject annotation.
+    // It provides $injector with information about dependencies to be injected into constructor
+    // it is better to have it close to the constructor, because the parameters must match in count and type.
+    // See http://docs.angularjs.org/guide/di
+    TodoCtrl.$inject = [
+        '$scope',
+        '$location',
+        'todoStorage',
+        'filterFilter'
+    ];
     todos.TodoCtrl = TodoCtrl;
 })(todos || (todos = {}));
 //# sourceMappingURL=TodoCtrl.js.map

@@ -1,9 +1,10 @@
 /// <reference path='_refs.ts' />
 
 
-module EmailEditorModule{
+module EmailEditorMod{
     'use strict';
 
     var testApp = angular.module('EmailEditorModule', []).
-                        controller('EmailEditorCtrl', EmailEditorCtrl);
+                        controller('EmailEditorCtrl', EmailEditorCtrl).
+                        directive('eMailInput', eMailInput);
 }

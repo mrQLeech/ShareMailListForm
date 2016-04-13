@@ -7,9 +7,9 @@ var todos;
      */
     function todoBlur() {
         return {
-            link: function ($scope, element, attributes) {
-                element.bind('blur', function () { $scope.$apply(attributes.todoBlur); });
-                $scope.$on('$destroy', function () { element.unbind('blur'); });
+            link: ($scope, element, attributes) => {
+                element.bind('blur', () => { $scope.$apply(attributes.todoBlur); });
+                $scope.$on('$destroy', () => { element.unbind('blur'); });
             }
         };
     }

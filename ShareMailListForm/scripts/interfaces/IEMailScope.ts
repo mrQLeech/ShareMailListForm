@@ -1,12 +1,11 @@
 /// <reference path='../_refs.ts' />
 
 
-module EmailEditorModule{
+module EmailEditorMod{
     'use strict';
 
     export interface IEMailScope extends ng.IScope {
         emails: IEMailItem[];
-        location: ng.ILocationService;
-        valid: boolean;
+        textArea:string;
     }
 }

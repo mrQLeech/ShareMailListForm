@@ -1,1 +1,1 @@
-{"version":3,"file":"IEMailScope.js","sourceRoot":"","sources":["IEMailScope.ts"],"names":["EmailEditorModule"],"mappings":"AAAA,oCAAoC;AAGpC,IAAO,iBAAiB,CAQvB;AARD,WAAO,iBAAiB,EAAA,CAAC;IACrBA,YAAYA,CAACA;AAOjBA,CAACA,EARM,iBAAiB,KAAjB,iBAAiB,QAQvB"}
+{"version":3,"file":"IEMailScope.js","sourceRoot":"","sources":["IEMailScope.ts"],"names":["EmailEditorMod"],"mappings":"AAAA,oCAAoC;AAGpC,IAAO,cAAc,CAOpB;AAPD,WAAO,cAAc,EAAA,CAAC;IAClBA,YAAYA,CAACA;AAMjBA,CAACA,EAPM,cAAc,KAAd,cAAc,QAOpB"}

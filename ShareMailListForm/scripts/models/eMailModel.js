@@ -1,17 +1,19 @@
 /// <reference path='../_refs.ts' />
-var EmailEditorModule;
-(function (EmailEditorModule) {
+var EmailEditorMod;
+(function (EmailEditorMod) {
     'use strict';
-    var EMailModel = (function () {
-        function EMailModel(eMail) {
+    class EMailModel {
+        constructor(eMail) {
             this._eMail = eMail;
         }
-        EMailModel.prototype.isValid = function () {
-            var regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        get() {
+            return this._eMail;
+        }
+        isValid() {
+            let regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return regExp.test(this._eMail);
-        };
-        return EMailModel;
-    })();
-    EmailEditorModule.EMailModel = EMailModel;
-})(EmailEditorModule || (EmailEditorModule = {}));
+        }
+    }
+    EmailEditorMod.EMailModel = EMailModel;
+})(EmailEditorMod || (EmailEditorMod = {}));
 //# sourceMappingURL=EMailModel.js.map

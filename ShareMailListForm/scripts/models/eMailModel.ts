@@ -1,11 +1,14 @@
 /// <reference path='../_refs.ts' />
 
-module EmailEditorModule{
+module EmailEditorMod{
     'use strict';
 
 
     export class EMailModel implements IEMailItem{
-        _eMail : string;
+        private _eMail : string;
+        get():string {
+            return this._eMail;
+        }
 
         constructor(eMail : string){
              this._eMail = eMail;
