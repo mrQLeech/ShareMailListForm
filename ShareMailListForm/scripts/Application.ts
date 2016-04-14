@@ -3,7 +3,7 @@
 module emailEditorMod{
     'use strict';
 
-    var testApp = angular.module('EmailEditorModule', []).
+    var testApp = angular.module('EmailEditorModule', ['ngRoute']).
                 controller('EmailEditorCtrl', emailEditorCtrl).
                 directive('eMailInput', eMailInput).
                         config(function($routeProvider, $locationProvider) {
