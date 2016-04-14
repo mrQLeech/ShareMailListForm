@@ -1,11 +1,18 @@
-emails-editor{
+emails-editor *,
+button.ng-emails-editor-button{
     height: 100%;
     width: 100%;
     display: block;
     position: relative;
     top: 0px;
     left: 0px;
+    font-family: Arial, sans-serif ;
 }
+
+div.ng-email-editor-title{
+    font-size: 20px;
+}
+
 div.ng-mail-list {
     width:300px;
     height:200px;
@@ -62,4 +69,20 @@ div.ng-email-btn-close{
 
 div.ng-email-btn-close:hover{
     background: transparent url('../img/close.png') -14px 0;
+}
+
+
+button.ng-emails-editor-button{
+    margin: 7px;
+    height: 30px;
+    width: 120px;
+    float: left;
+    color: white;
+    border: 1px solid #6699ff;
+    border-radius: 2px;
+    background-color: #6699ff;
+}
+
+button.ng-emails-editor-button:hover{
+    background-color: #99ccff;
 }

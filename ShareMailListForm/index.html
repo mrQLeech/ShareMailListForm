@@ -13,13 +13,13 @@
 </head>
 <body ng-controller="emailEditorCtrl">
     <section class="sizable-section" style="display:block; resize: both; sizable:true; height: 300px; width: 450px;">
-        <emails-editor>
+        <emails-editor mailslist="emails">
 
 
         </emails-editor>
-       <!-- <button ng-click="addEmails()">add random email</button>
-        <button ng-click="getEmailsCount()">get emails count</button>
-        -->
+        <button ng-click="addEmails()" class="ng-emails-editor-button">Add email</button>
+        <button ng-click="getEmailsCount()" class="ng-emails-editor-button">Get emails count</button>
+
     </section>
 
 

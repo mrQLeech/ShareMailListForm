@@ -12,11 +12,11 @@ module emailEditorMod{
         ];
 
          constructor(private $scope: IEMailScope){
-            this.mailList = $scope =  [];
+            this.mailList = $scope.emails =  [];
             this.addEMail("test1@t.ru");
             this.addEMail("test2@t.ru");
             this.addEMail("test3@t.ru");
-
+            $scope.emails = this.mailList;
         }
 
         addEMail(eMail:string){

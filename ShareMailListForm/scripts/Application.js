@@ -30,10 +30,14 @@ var emailEditorMod;
     function emailsEditor() {
         return {
             restrict: 'E',
-            template: "\n            <div>\n                <div class=\"ng-email-editor-title\">Share \"Board name\" with others</div>\n\n                <div class=\"ng-mail-list\" > {{emails.getMail()}} </div>\n\n                <!--<div class=\"ng-mail-item\">\n                        <div class=\"ng-email-text\" >\n\n                          <!--  <span ng-style=\"email.isValid()?{}: {color : red; text-decoration : underline;}\">\n                                <span>{{email.get()}}</span>\n                            </span>-->\n                       <!-- </div>\n                        <div class=\"ng-email-btn-close\">\n                        </div>\n                    </div>-->\n\n                   <!-- <textarea email-Input mail-input-value=\"\" class=\"ng-email-input\"  placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u044B...\" ></textarea> -->\n            </div>\n            ",
+            template: "\n\n            <div>\n\n                <div class=\"ng-email-editor-title\">Share \"Board name\" with others</div>\n                <div class=\"ng-mail-list\" >\n                    <div class=\"ng-mail-item\" ng-repeat=\"mail in mails\">\n                         <div class=\"ng-email-text\" >\n                             <span style={{ mail.isValid()?'':'text-decoration:underline;color:red;' }}>\n                                 <span style=\"color:black;\">{{mail.getMail()}}</span>\n                             </span>\n                         </div>\n                         <div class=\"ng-email-btn-close\">\n                         </div>\n                    </div>\n                    <textarea email-Input mail-input-value=\"\" class=\"ng-email-input\" placeholder=\"add more people...\" ></textarea>\n                </div>\n            </div>\n            ",
             replace: true,
+            controller: emailEditorMod.emailEditorCtrl,
             scope: {
-                emails: "="
+                mails: "=mailslist"
+            },
+            link: function (scope, element, attributes) {
+                alert(scope.emails);
             }
         };
     }
@@ -46,10 +50,11 @@ var emailEditorMod;
     var emailEditorCtrl = (function () {
         function emailEditorCtrl($scope) {
             this.$scope = $scope;
-            this.mailList = $scope = [];
+            this.mailList = $scope.emails = [];
             this.addEMail("test1@t.ru");
             this.addEMail("test2@t.ru");
             this.addEMail("test3@t.ru");
+            $scope.emails = this.mailList;
         }
         emailEditorCtrl.prototype.addEMail = function (eMail) {
             if (eMail) {
