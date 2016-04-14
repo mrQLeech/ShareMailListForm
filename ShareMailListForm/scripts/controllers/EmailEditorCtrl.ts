@@ -1,19 +1,17 @@
 /// <reference path='../_refs.ts' />
 
 
-module EmailEditorMod{
+module emailEditorMod{
     'use strict';
 
-    export class EmailEditorCtrl{
+    export class emailEditorCtrl{
         private mailList: EMailModel[];
 
         public static $inject = [
             '$scope'
         ];
 
-        // dependencies are injected via AngularJS $injector
-        // controller's name is registered in Application.ts and specified from ng-controller attribute in index.html
-        constructor(private $scope: IEMailScope){
+         constructor(private $scope: IEMailScope){
             this.mailList =  [];
             this.addEMail("test1@t.ru");
             this.addEMail("test2@t.ru");
@@ -35,7 +33,7 @@ module EmailEditorMod{
             let rEl:IEMailItem;
             for (let i =  mList.length - 1; i >= 0; i--){
                 let el = mList[i];
-                if(el.get() == eMail){
+                if(el.getMail() == eMail){
                     this.mailList.slice(i);
                 }
             }

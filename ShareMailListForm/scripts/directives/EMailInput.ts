@@ -1,6 +1,6 @@
 /// <reference path="../_refs.ts" />
 
-module EmailEditorMod{
+module emailEditorMod{
     'use strict';
 
     export function eMailInput(): ng.IDirective {

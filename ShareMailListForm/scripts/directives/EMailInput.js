@@ -1,6 +1,6 @@
 /// <reference path="../_refs.ts" />
-var EmailEditorMod;
-(function (EmailEditorMod) {
+var emailEditorMod;
+(function (emailEditorMod) {
     'use strict';
     function eMailInput() {
         return {
@@ -10,6 +10,6 @@ var EmailEditorMod;
             }
         };
     }
-    EmailEditorMod.eMailInput = eMailInput;
-})(EmailEditorMod || (EmailEditorMod = {}));
+    emailEditorMod.eMailInput = eMailInput;
+})(emailEditorMod || (emailEditorMod = {}));
 //# sourceMappingURL=EMailInput.js.map

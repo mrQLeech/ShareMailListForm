@@ -1,8 +1,8 @@
 /// <references path="../_refs.ts" />
 
-module EmailEditorMod{
+module emailEditorMod{
     export interface IEMailItem{
-        get ():string;
+        getMail ():string;
         isValid(): boolean;
     }
 }

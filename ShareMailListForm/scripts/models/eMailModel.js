@@ -1,19 +1,20 @@
 /// <reference path='../_refs.ts' />
-var EmailEditorMod;
-(function (EmailEditorMod) {
+var emailEditorMod;
+(function (emailEditorMod) {
     'use strict';
-    class EMailModel {
-        constructor(eMail) {
+    var EMailModel = (function () {
+        function EMailModel(eMail) {
             this._eMail = eMail;
         }
-        get() {
+        EMailModel.prototype.getMail = function () {
             return this._eMail;
-        }
-        isValid() {
-            let regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        };
+        EMailModel.prototype.isValid = function () {
+            var regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return regExp.test(this._eMail);
-        }
-    }
-    EmailEditorMod.EMailModel = EMailModel;
-})(EmailEditorMod || (EmailEditorMod = {}));
+        };
+        return EMailModel;
+    })();
+    emailEditorMod.EMailModel = EMailModel;
+})(emailEditorMod || (emailEditorMod = {}));
 //# sourceMappingURL=EMailModel.js.map

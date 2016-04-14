@@ -1,12 +1,13 @@
 /// <reference path='../_refs.ts' />
 
-module EmailEditorMod{
+module emailEditorMod{
     'use strict';
 
 
     export class EMailModel implements IEMailItem{
+
         private _eMail : string;
-        get():string {
+        getMail():string {
             return this._eMail;
         }
 
@@ -16,7 +17,7 @@ module EmailEditorMod{
 
         isValid():boolean {
 
-            let regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            var regExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return regExp.test(this._eMail);
         }
 

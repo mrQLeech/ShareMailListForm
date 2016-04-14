@@ -1,7 +1,7 @@
 /// <reference path='../_refs.ts' />
 
 
-module EmailEditorMod{
+module emailEditorMod{
     'use strict';
 
     export interface IEMailScope extends ng.IScope {

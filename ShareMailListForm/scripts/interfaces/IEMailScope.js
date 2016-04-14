@@ -1,6 +1,6 @@
 /// <reference path='../_refs.ts' />
-var EmailEditorMod;
-(function (EmailEditorMod) {
+var emailEditorMod;
+(function (emailEditorMod) {
     'use strict';
-})(EmailEditorMod || (EmailEditorMod = {}));
+})(emailEditorMod || (emailEditorMod = {}));
 //# sourceMappingURL=IEMailScope.js.map

@@ -3,33 +3,36 @@
     <meta charset="utf-8"/>
     <title>Mail list module test page</title>
     <link rel="stylesheet" href="src/styles/emailsEditor.css" />
+
+
     <style>[ng-cloak] { display: none; }</style>
 </head>
 <body >
-    <section class="">
+    <section class="sizable-section" style="display:block; resize: both; sizable:true; height: 300px; width: 450px;">
         <emails-editor ng-controller="emailEditorCtrl">
             <div class="ng-email-editor-title">Share "Board name" with others</div>
-            <div class="mail-list" ng-repeat="email in emails">
-                <div class="mail-item">
-                    <div class="email-text" >
+            <div class="ng-mail-list" ng-repeat="email in emails">
+                <div class="ng-mail-item">
+                    <div class="ng-email-text" >
 
                       <!--  <span ng-style="email.isValid()?{}: {color : red; text-decoration : underline;}">
                             <span>{{email.get()}}</span>
                         </span>-->
                     </div>
-                    <div class="email-btn-close">
+                    <div class="ng-email-btn-close">
                     </div>
                 </div>
 
-                <textarea EMail-Input mail-input-value="" class="new-mail-input"  placeholder="Введите адрес электронной почты..." ></textarea>
+                <textarea email-Input mail-input-value="" class="ng-email-input"  placeholder="Введите адрес электронной почты..." ></textarea>
             </div>
         </emails-editor>
        <!-- <button ng-click="addEmails()">add random email</button>
         <button ng-click="getEmailsCount()">get emails count</button>
         -->
     </section>
-    <script src="libs/angular/angular.js"></script>
 
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular/angular-route.js"></script>
     <script src="scripts/Application.js"></script>
 </body>
 </html>

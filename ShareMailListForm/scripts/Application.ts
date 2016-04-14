@@ -1,10 +1,18 @@
 /// <reference path='_refs.ts' />
 
-
-module EmailEditorMod{
+module emailEditorMod{
     'use strict';
 
     var testApp = angular.module('EmailEditorModule', []).
-                        controller('EmailEditorCtrl', EmailEditorCtrl).
-                        directive('eMailInput', eMailInput);
+                controller('EmailEditorCtrl', emailEditorCtrl).
+                directive('eMailInput', eMailInput).
+                        config(function($routeProvider, $locationProvider) {
+                            $routeProvider
+                                .when('/', {
+                                    templateUrl: '../index.html',
+                                    controller: 'EmailEditorCtrl',
+
+                                });
+                            $locationProvider.html5Mode(true);
+                        });
 }
