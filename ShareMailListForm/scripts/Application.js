@@ -27,15 +27,17 @@ var emailEditorMod;
 var emailEditorMod;
 (function (emailEditorMod) {
     'use strict';
-    function eMailInput() {
+    function emailsEditor() {
         return {
-            restrict: 'A',
+            restrict: 'E',
+            template: "\n            <div>\n                <div class=\"ng-email-editor-title\">Share \"Board name\" with others</div>\n\n                <div class=\"ng-mail-list\" > {{emails.getMail()}} </div>\n\n                <!--<div class=\"ng-mail-item\">\n                        <div class=\"ng-email-text\" >\n\n                          <!--  <span ng-style=\"email.isValid()?{}: {color : red; text-decoration : underline;}\">\n                                <span>{{email.get()}}</span>\n                            </span>-->\n                       <!-- </div>\n                        <div class=\"ng-email-btn-close\">\n                        </div>\n                    </div>-->\n\n                   <!-- <textarea email-Input mail-input-value=\"\" class=\"ng-email-input\"  placeholder=\"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u044B...\" ></textarea> -->\n            </div>\n            ",
+            replace: true,
             scope: {
-                mailStr: "=mailinputvalue"
+                emails: "="
             }
         };
     }
-    emailEditorMod.eMailInput = eMailInput;
+    emailEditorMod.emailsEditor = emailsEditor;
 })(emailEditorMod || (emailEditorMod = {}));
 /// <reference path='../_refs.ts' />
 var emailEditorMod;
@@ -44,7 +46,7 @@ var emailEditorMod;
     var emailEditorCtrl = (function () {
         function emailEditorCtrl($scope) {
             this.$scope = $scope;
-            this.mailList = [];
+            this.mailList = $scope = [];
             this.addEMail("test1@t.ru");
             this.addEMail("test2@t.ru");
             this.addEMail("test3@t.ru");
@@ -83,23 +85,15 @@ var emailEditorMod;
 /// <reference path='./interfaces/IEMailItem.ts' />
 /// <reference path='./interfaces/IEMailScope.ts' />
 /// <reference path='./models/EMailModel.ts' />
-/// <reference path='./directives/EMailInput.ts' />
+/// <reference path='./directives/emailsEditor.ts' />
 /// <reference path='./controllers/EmailEditorCtrl.ts' />
 /// <reference path='Application.ts' />
 /// <reference path='_refs.ts' />
 var emailEditorMod;
 (function (emailEditorMod) {
     'use strict';
-    var testApp = angular.module('EmailEditorModule', ['ngRoute']).
-        controller('EmailEditorCtrl', emailEditorMod.emailEditorCtrl).
-        directive('eMailInput', emailEditorMod.eMailInput).
-        config(function ($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/', {
-            templateUrl: '../index.html',
-            controller: 'EmailEditorCtrl',
-        });
-        $locationProvider.html5Mode(true);
-    });
+    var testApp = angular.module('apps', ['ngRoute'])
+        .directive('emailsEditor', emailEditorMod.emailsEditor)
+        .controller('emailEditorCtrl', emailEditorMod.emailEditorCtrl);
 })(emailEditorMod || (emailEditorMod = {}));
 //# sourceMappingURL=Application.js.map
