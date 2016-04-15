@@ -29,16 +29,8 @@ module emailEditorMod{
             controller: emailEditorCtrl,
             scope: {
                 mails: "=mailslist"
-            },
-            link: function(scope:IEMailScope, element:JQuery, attributes:any){
-                alert(scope.emails);
             }
-
         };
     }
 }
 
-
-/*
-
- */

@@ -12,11 +12,13 @@ module emailEditorMod{
         ];
 
          constructor(private $scope: IEMailScope){
-            this.mailList = $scope.emails =  [];
-            this.addEMail("test1@t.ru");
-            this.addEMail("test2@t.ru");
-            this.addEMail("test3@t.ru");
-            $scope.emails = this.mailList;
+             this.mailList = $scope.emails =  [];
+             this.addEMail("test1@t.ru");
+             this.addEMail("test2@t.ru");
+             this.addEMail("test3@t.ru");
+             $scope.emails = this.mailList
+
+             $scope.getEmailsCount = this.getEmailsCount;
         }
 
         addEMail(eMail:string){
@@ -43,6 +45,10 @@ module emailEditorMod{
 
         parseEmails(eMailString:string){
 
+        }
+
+        getEmailsCount(){
+            alert('Count of emails: ' + this.mailList.length);
         }
     }
 }

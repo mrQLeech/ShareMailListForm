@@ -35,9 +35,6 @@ var emailEditorMod;
             controller: emailEditorMod.emailEditorCtrl,
             scope: {
                 mails: "=mailslist"
-            },
-            link: function (scope, element, attributes) {
-                alert(scope.emails);
             }
         };
     }
@@ -55,6 +52,7 @@ var emailEditorMod;
             this.addEMail("test2@t.ru");
             this.addEMail("test3@t.ru");
             $scope.emails = this.mailList;
+            $scope.getEmailsCount = this.getEmailsCount;
         }
         emailEditorCtrl.prototype.addEMail = function (eMail) {
             if (eMail) {
@@ -78,6 +76,9 @@ var emailEditorMod;
         };
         emailEditorCtrl.prototype.parseEmails = function (eMailString) {
         };
+        emailEditorCtrl.prototype.getEmailsCount = function () {
+            alert('Count of emails: ' + this.mailList.length);
+        };
         emailEditorCtrl.$inject = [
             '$scope'
         ];
@@ -99,6 +100,20 @@ var emailEditorMod;
     'use strict';
     var testApp = angular.module('apps', ['ngRoute'])
         .directive('emailsEditor', emailEditorMod.emailsEditor)
-        .controller('emailEditorCtrl', emailEditorMod.emailEditorCtrl);
+        .controller('emailEditorCtrl', emailEditorMod.emailEditorCtrl)
+        .controller('button', emailEditorMod.emailEditorCtrl);
+})(emailEditorMod || (emailEditorMod = {}));
+/// <reference path="../_refs.ts" />
+var emailEditorMod;
+(function (emailEditorMod) {
+    'use strict';
+    function btnClicker() {
+        return {
+            restrict: 'E',
+            controller: emailEditorMod.emailEditorCtrl,
+            scope: {}
+        };
+    }
+    emailEditorMod.btnClicker = btnClicker;
 })(emailEditorMod || (emailEditorMod = {}));
 //# sourceMappingURL=Application.js.map

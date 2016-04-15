@@ -7,5 +7,6 @@ module emailEditorMod{
     export interface IEMailScope extends ng.IScope {
         emails: IEMailItem[];
         textArea:string;
+        getEmailsCount();
     }
 }
