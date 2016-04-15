@@ -7,8 +7,11 @@ module emailEditorMod{
         return {
             restrict:'E',
             controller: emailEditorCtrl,
-            scope: {
+            scope: {},
+            link: function(scope:IEMailScope, element:JQuery, attributes:any){
+                console.log(scope.getEmailsCount);
             }
+
         };
     }
 }

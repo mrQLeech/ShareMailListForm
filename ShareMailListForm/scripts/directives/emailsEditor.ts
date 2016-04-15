@@ -14,7 +14,7 @@ module emailEditorMod{
                 <div class="ng-mail-list" >
                     <div class="ng-mail-item" ng-repeat="mail in mails">
                          <div class="ng-email-text" >
-                             <span style={{ mail.isValid()?'':'text-decoration:underline;color:red;' }}>
+                             <span style='{{mail.isValid() ? "":"text-decoration:underline;color:red;text-decoration-style:wavy;-moz-text-decoration-style: wavy;"}}'>
                                  <span style="color:black;">{{mail.getMail()}}</span>
                              </span>
                          </div>

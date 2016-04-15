@@ -4,6 +4,7 @@
 /// <reference path='./interfaces/IEMailScope.ts' />
 /// <reference path='./models/EMailModel.ts' />
 /// <reference path='./directives/emailsEditor.ts' />
+/// <reference path='./directives/btnClicker.ts' />
 /// <reference path='./controllers/EmailEditorCtrl.ts' />
 /// <reference path='Application.ts' />
 

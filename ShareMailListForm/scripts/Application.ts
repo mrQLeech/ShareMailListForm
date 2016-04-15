@@ -5,7 +5,7 @@ module emailEditorMod{
 
     var testApp = angular.module('apps', ['ngRoute'])
         .directive('emailsEditor', emailsEditor)
-        .controller('emailEditorCtrl', emailEditorCtrl)
-        .controller('button', emailEditorCtrl);
+       // .directive('button', btnClicker)
+        .controller('emailEditorCtrl', emailEditorCtrl);
 
 }
