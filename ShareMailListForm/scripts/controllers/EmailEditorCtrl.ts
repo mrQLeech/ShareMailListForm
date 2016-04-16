@@ -1,4 +1,5 @@
 /// <reference path='../_refs.ts' />
+///<reference path="../interfaces/IEMailScope.ts"/>
 
 
 module emailEditorMod{
@@ -7,16 +8,17 @@ module emailEditorMod{
 
     export class emailEditorCtrl{
         private mailList: EMailModel[];
+        private inputText: string;
 
         public static $inject = [
-            '$scope'
+            '$scope',
+            'element',
+            'attributes'
         ];
 
-        constructor(private $scope: IEMailScope){
-             this.mailList = $scope.emails =  [];
-             this.addEMail("test1@t.ru");
-             this.addEMail("test2");
-             this.addEMail("test3@t.ru");
+        constructor(private $scope: IEMailScope, element: JQuery, attributes: any){
+            this.mailList = $scope.emails =  [];
+            this.inputText = $scope.inputText = "";
         }
 
         addEMail(eMail:string): void{
@@ -29,19 +31,25 @@ module emailEditorMod{
             this.$scope.emails = this.mailList;
         }
 
-        removeMail(eMail:string): void{
+        removeMail(mail:string): void{
             let mList = this.mailList;
-            let rEl:IEMailItem;
+
             for (let i =  mList.length - 1; i >= 0; i--){
                 let el = mList[i];
-                if(el.getMail() == eMail){
-                    this.mailList.slice(i);
+                if(el.getMail() == mail){
+                    this.mailList.splice(i, 1);
                 }
             }
-            this.$scope.emails = this.mailList;
         }
 
-        parseEmails(eMailString:string){
+        parseEmails(){
+            let str = this.inputText.replace(/,/g , "");
+            let arr: string[] = this.inputText.split(" ");
+            for (let i = 0; i < arr.length; i++){
+                if (arr[i]) this.addEMail(arr[i]);
+            }
+
+            this.inputText = this.$scope.inputText =  "";
         }
 
         getEmailsCount(): void{
@@ -49,10 +57,10 @@ module emailEditorMod{
         }
 
         addRandEmail(): void{
-            var res: string;
+            let res: string = "";
 
-            var possibleSymb = "abcdefghijklmnopqrstuvwxyz";
-            var possibleDomens = ["ru", "com", "org", "en", "ua", "net", "gov"];
+            let possibleSymb = "abcdefghijklmnopqrstuvwxyz";
+            let possibleDomens = ["ru", "com", "org", "en", "ua", "net", "gov"];
 
 
             res += this.getRandString(possibleSymb, Math.floor(Math.random() * 14) + 1 ); // string must be more or equal than 1
@@ -61,14 +69,14 @@ module emailEditorMod{
             res += ".";
             res += this.getRandArrItem(possibleDomens);
 
-            this.mailList.push(new EMailModel(res));
+            this.addEMail(res);
         }
 
         private getRandString(posibleSymb: string, resLength: number) : string {
-            var res = "";
-            var posLength = posibleSymb.length;
-            for( var i = 0; i < resLength; i++ ){
-                var ch = posibleSymb.charAt(Math.floor(Math.random() * posLength));
+            let res = "";
+            let posLength = posibleSymb.length;
+            for( let i = 0; i < resLength; i++ ){
+                let ch = posibleSymb.charAt(Math.floor(Math.random() * posLength));
                 res += ch;
             }
 

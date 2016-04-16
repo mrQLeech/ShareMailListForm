@@ -12,10 +12,8 @@
     <style>[ng-cloak] { display: none; }</style>
 </head>
 <body ng-controller="emailEditorCtrl as ctrl">
-    <section class="sizable-section" style="display:block; resize: both; sizable:true; height: 300px; width: 450px;">
-        <emails-editor mailslist="emails">
-
-
+    <section class="sizable-section" style="display:block; resize: both; sizable:true; height: 300px; width: 450px;" ng-controller="emailEditorCtrl as ctrl">
+        <emails-editor mails-list="emails" input-text="inputtxt" rm-mail="removeMail">
         </emails-editor>
         <button ng-click="ctrl.addRandEmail()" class="ng-emails-editor-button">Add email</button>
         <button ng-click="ctrl.getEmailsCount()" class="ng-emails-editor-button">Get emails count</button>

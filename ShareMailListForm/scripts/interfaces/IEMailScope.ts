@@ -6,7 +6,11 @@ module emailEditorMod{
 
     export interface IEMailScope extends ng.IScope {
         emails: IEMailItem[];
-        textArea:string;
+        inputText:string;
         getEmailsCount();
+        addRandEmail();
+        removeMail(mail:string):void;
+        parseEmails();
+
     }
 }

@@ -57,6 +57,7 @@ div.ng-email-text{
     display: inline-block;
     position: relative;
     top: -1px;
+    overflow: hidden;
 }
 
 div.ng-email-btn-close{
@@ -85,4 +86,9 @@ button.ng-emails-editor-button{
 
 button.ng-emails-editor-button:hover{
     background-color: #99ccff;
+}
+
+.ng-email-text span.invalid {
+    border-bottom: red solid 1px;
+    border-bottom-style: dotted;
 }
