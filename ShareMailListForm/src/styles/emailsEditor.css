@@ -1,4 +1,4 @@
-emails-editor *,
+
 button.ng-emails-editor-button{
     height: 100%;
     width: 100%;
@@ -16,6 +16,7 @@ div.ng-emails-holder{
 div.ng-email-editor{
     height: calc(100% - 100px);
     background-color: #F5F5F5;
+    min-width: 325px;
 }
 
 div.ng-email-editor-title{
@@ -49,7 +50,7 @@ div.ng-mail-list {
 
 div.ng-mail-item{
     color: #ccc;
-    font-size: 14px;
+    font-size: 13px;
     height: 16px;
     max-width: 220px;
     float:left;
@@ -114,7 +115,7 @@ button.ng-emails-editor-button{
     border: 1px solid #6699ff;
     border-radius: 2px;
     background-color: #6699ff;
-    margin: 20px 20px 20px 40px;
+    margin: 20px 20px 20px 20px;
 
 }
 
