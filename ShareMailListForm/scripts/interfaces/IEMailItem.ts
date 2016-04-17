@@ -1,4 +1,4 @@
-/// <references path="../_refs.ts" />
+/// <reference path="../_refs.ts" />
 
 module emailEditorMod{
     export interface IEMailItem{

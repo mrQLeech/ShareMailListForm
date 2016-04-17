@@ -1,0 +1,25 @@
+html *{
+    font-family: Arial, sans-serif ;
+}
+
+#test1{
+    display: block;
+    height: 350px;
+    width: 400px;
+}
+
+#test2{
+    display: block;
+    height: 600px;
+    width: 800px;
+}
+
+#holderTest1{
+    display: block;
+    height: 250px;
+    min-height: 250px;
+    width: 300px;
+    resize: both;
+    overflow: hidden;
+}
+

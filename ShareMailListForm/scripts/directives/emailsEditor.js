@@ -12,4 +12,4 @@ var emailEditorMod;
     }
     emailEditorMod.eMailInput = eMailInput;
 })(emailEditorMod || (emailEditorMod = {}));
-//# sourceMappingURL=emailsEditor.js.map
+//# sourceMappingURL=EmailsEditor.js.map

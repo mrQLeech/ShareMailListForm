@@ -7,50 +7,27 @@ module emailEditorMod{
         return {
             restrict:'E',
             template: `
-
-            <div>
-
+            <div class="ng-email-editor">
                 <div class="ng-email-editor-title">Share "Board name" with others</div>
                 <div class="ng-mail-list" >
-                    <div class="ng-mail-item" ng-repeat="mail in emails">
-                         <div class="ng-email-text" >
+                    <div class="ng-mail-item" ng-repeat="mail in emails.mailList" title="{{mail.getMail()}}">
+                         <div class="ng-email-text"  >
                              <span class='{{!mail.isValid() ? "invalid":""}}'>
                                  <span style="color:black;">{{mail.getMail()}}</span>
                              </span>
                          </div>
-                         <div class="ng-email-btn-close" ng-click='removeMail(mail.getMail())' >
-                         </div>
+                         <div class="ng-email-btn-close" ng-click='emails.removeMail(mail.getMail())' ></div>
                     </div>
-                    <textarea email-Input  class="ng-email-input" ng-blur="parseEmails()"
-                            placeholder="add more people..." ng-model="inputText" ng-keyup="keyUp($event)" ></textarea>
+                    <textarea email-Input  class="ng-email-input" ng-blur="emails.parseEmails()"
+                            placeholder="add more people..." ng-model="emails.mailStringStream" ng-keyup="emails.onKeyUp($event)" ></textarea>
                 </div>
             </div>
             `,
             replace: true,
-            transclude: true,
             scope: {
-                emails: "=mailsList",
-                inputText: "=inputText"
-
+                emails: "=mailsCollection"
             },
             link: function(scope:IEMailScope, elemetn, attributes){
-                scope.removeMail = function (mail) {
-                    scope.$parent.ctrl.removeMail(mail);
-                }
-
-                scope.parseEmails = function(){
-                    let parent = scope.$parent.ctrl;
-                    parent.inputText = scope.inputText;
-                    scope.$parent.ctrl.parseEmails();
-                    scope.inputText = "";
-                }
-
-                scope.keyUp = function(event){
-                    if (event.code === "Comma" || event.code === "Enter"){
-                        scope.parseEmails();
-                    }
-                }
-
 
             }
         };
