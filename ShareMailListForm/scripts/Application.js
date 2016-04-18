@@ -35,12 +35,16 @@ var emailEditorMod;
     function emailsEditor() {
         return {
             restrict: 'E',
-            template: "\n            <div class=\"ng-email-editor\">\n                <div class=\"ng-email-editor-title\">Share \"Board name\" with others</div>\n                <div class=\"ng-mail-list\" >\n                    <div class=\"ng-mail-item\" ng-repeat=\"mail in emails.mailList\" title=\"{{mail.getMail()}}\">\n                         <div class=\"ng-email-text\"  >\n                             <span class='{{!mail.isValid() ? \"invalid\":\"\"}}'>\n                                 <span style=\"color:black;\">{{mail.getMail()}}</span>\n                             </span>\n                         </div>\n                         <div class=\"ng-email-btn-close\" ng-click='emails.removeMail(mail.getMail())' ></div>\n                    </div>\n                    <textarea email-Input  class=\"ng-email-input\" ng-blur=\"emails.parseEmails()\"\n                            placeholder=\"add more people...\" ng-model=\"emails.mailStringStream\" ng-keyup=\"emails.onKeyUp($event)\" ></textarea>\n                </div>\n            </div>\n            ",
+            template: "\n            <div class=\"ng-email-editor\">\n\n                <div class=\"ng-mail-list\" >\n                    <div class=\"ng-mail-item\" ng-repeat=\"mail in emails.mailList\" title=\"{{mail.getMail()}}\">\n                         <div class=\"ng-email-text\"  >\n                             <span class='{{!mail.isValid() ? \"invalid\":\"\"}}'>\n                                 <span style=\"color:black;\">{{mail.getMail()}}</span>\n                             </span>\n                         </div>\n                         <div class=\"ng-email-btn-close\" ng-click='emails.removeMail(mail.getMail())' ></div>\n                    </div>\n                    <textarea email-Input  class=\"ng-email-input\" ng-blur=\"ctrl.parseEmails()\"\n                            placeholder=\"add more people...\" ng-model=\"ctrl.mailString\" ng-keyup=\"ctrl.onKeyUp($event)\" ></textarea>\n                </div>\n            </div>\n            ",
             replace: true,
             scope: {
-                emails: "=mailsCollection"
+                emails: "=mailsCollection",
+                mailString: "=mailsInput"
             },
-            link: function (scope, elemetn, attributes) {
+            controller: ['$scope', emailEditorMod.emailEditorCtrl],
+            controllerAs: 'ctrl',
+            link: function (scope, elemetn, attributes, ctrl) {
+                console.log(scope);
             }
         };
     }
@@ -53,7 +57,7 @@ var emailEditorMod;
     function emailsHolder() {
         return {
             restrict: 'E',
-            template: "\n                <div class=\"ng-emails-holder\">\n                    <emails-editor mails-collection=\"ctrl.mailList\" ></emails-editor>\n                    <button ng-click=\"ctrl.mailList.addEmails()\" class=\"ng-emails-editor-button add-mails-button\">Add email</button>\n                    <button ng-click=\"ctrl.mailList.getEmailsCount()\" class=\"ng-emails-editor-button get-count-button\">Get emails count</button>\n\n                </div>\n            ",
+            template: "\n                <div class=\"ng-emails-holder\">\n                    <div class=\"ng-email-editor-title\">Share \"Board name\" with others</div>\n                    <emails-editor mails-collection=\"ctrl.mailList\" ></emails-editor>\n                    <button ng-click=\"ctrl.addEmails()\" class=\"ng-emails-editor-button add-mails-button\">Add email</button>\n                    <button ng-click=\"ctrl.getEmailsCount()\" class=\"ng-emails-editor-button get-count-button\">Get emails count</button>\n\n                </div>\n            ",
             replace: true,
             controller: ['$scope', emailEditorMod.emailEditorCtrl],
             controllerAs: 'ctrl',
@@ -69,7 +73,6 @@ var emailEditorMod;
     var EMailCollection = (function () {
         function EMailCollection() {
             this.mailList = [];
-            this.mailStringStream = "";
         }
         EMailCollection.prototype.addEMail = function (eMail) {
             if (eMail) {
@@ -88,50 +91,8 @@ var emailEditorMod;
                 }
             }
         };
-        EMailCollection.prototype.parseEmails = function () {
-            if (this.mailStringStream === "")
-                return;
-            var str = this.mailStringStream.replace(/,/g, "");
-            var arr = str.split(" ");
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i])
-                    this.addEMail(arr[i]);
-            }
-            this.mailStringStream = "";
-        };
-        EMailCollection.prototype.getEmailsCount = function () {
-            alert('Count of emails: ' + this.mailList.length);
-        };
-        EMailCollection.prototype.addEmails = function () {
-            var res = "";
-            var possibleSymb = "abcdefghijklmnopqrstuvwxyz";
-            var possibleDomains = ["ru", "com", "org", "en", "ua", "net", "gov"];
-            res += this.getRandString(possibleSymb, Math.floor(Math.random() * 14) + 1);
-            res += "@";
-            res += this.getRandString(possibleSymb, Math.floor(Math.random() * 9) + 1);
-            res += ".";
-            res += this.getRandArrItem(possibleDomains);
-            this.addEMail(res);
-        };
-        EMailCollection.prototype.onKeyUp = function (event) {
-            var key = event.which;
-            key = (key && key > 0) ? key : key = event.keyCode;
-            key = (key && key > 0) ? key : key = event.charCode;
-            if (key === 188 || key === 13) {
-                this.parseEmails();
-            }
-        };
-        EMailCollection.prototype.getRandString = function (posibleSymb, resLength) {
-            var res = "";
-            var posLength = posibleSymb.length;
-            for (var i = 0; i < resLength; i++) {
-                var ch = posibleSymb.charAt(Math.floor(Math.random() * posLength));
-                res += ch;
-            }
-            return res;
-        };
-        EMailCollection.prototype.getRandArrItem = function (arr) {
-            return arr[Math.floor(Math.random() * arr.length)];
+        EMailCollection.prototype.length = function () {
+            return this.mailList.length;
         };
         return EMailCollection;
     })();
@@ -145,7 +106,55 @@ var emailEditorMod;
         function emailEditorCtrl($scope) {
             this.$scope = $scope;
             this.mailList = new emailEditorMod.EMailCollection();
+            this.mailStringStream = "";
         }
+        emailEditorCtrl.prototype.parseEmails = function () {
+            var mList = this.mailList;
+            if (this.mailStringStream === "")
+                return;
+            var str = this.mailStringStream.replace(/,/g, "");
+            var arr = str.split(" ");
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i])
+                    mList.addEMail(arr[i]);
+            }
+            this.mailStringStream = "";
+        };
+        emailEditorCtrl.prototype.getEmailsCount = function () {
+            alert('Count of emails: ' + this.mailList.length());
+        };
+        emailEditorCtrl.prototype.addEmails = function () {
+            var mList = this.mailList;
+            var res = "";
+            var possibleSymb = "abcdefghijklmnopqrstuvwxyz";
+            var possibleDomains = ["ru", "com", "org", "en", "ua", "net", "gov"];
+            res += this.getRandString(possibleSymb, Math.floor(Math.random() * 14) + 1);
+            res += "@";
+            res += this.getRandString(possibleSymb, Math.floor(Math.random() * 9) + 1);
+            res += ".";
+            res += this.getRandArrItem(possibleDomains);
+            mList.addEMail(res);
+        };
+        emailEditorCtrl.prototype.onKeyUp = function (event) {
+            var key = event.which;
+            key = (key && key > 0) ? key : key = event.keyCode;
+            key = (key && key > 0) ? key : key = event.charCode;
+            if (key === 188 || key === 13) {
+                this.parseEmails();
+            }
+        };
+        emailEditorCtrl.prototype.getRandString = function (posibleSymb, resLength) {
+            var res = "";
+            var posLength = posibleSymb.length;
+            for (var i = 0; i < resLength; i++) {
+                var ch = posibleSymb.charAt(Math.floor(Math.random() * posLength));
+                res += ch;
+            }
+            return res;
+        };
+        emailEditorCtrl.prototype.getRandArrItem = function (arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        };
         emailEditorCtrl.$inject = [
             '$scope'
         ];

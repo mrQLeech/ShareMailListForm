@@ -8,7 +8,7 @@ module emailEditorMod{
             restrict:'E',
             template: `
             <div class="ng-email-editor">
-                <div class="ng-email-editor-title">Share "Board name" with others</div>
+
                 <div class="ng-mail-list" >
                     <div class="ng-mail-item" ng-repeat="mail in emails.mailList" title="{{mail.getMail()}}">
                          <div class="ng-email-text"  >
@@ -18,17 +18,20 @@ module emailEditorMod{
                          </div>
                          <div class="ng-email-btn-close" ng-click='emails.removeMail(mail.getMail())' ></div>
                     </div>
-                    <textarea email-Input  class="ng-email-input" ng-blur="emails.parseEmails()"
-                            placeholder="add more people..." ng-model="emails.mailStringStream" ng-keyup="emails.onKeyUp($event)" ></textarea>
+                    <textarea email-Input  class="ng-email-input" ng-blur="ctrl.parseEmails()"
+                            placeholder="add more people..." ng-model="ctrl.mailString" ng-keyup="ctrl.onKeyUp($event)" ></textarea>
                 </div>
             </div>
             `,
             replace: true,
             scope: {
-                emails: "=mailsCollection"
+                emails: "=mailsCollection",
+                mailString: "=mailsInput"
             },
-            link: function(scope:IEMailScope, elemetn, attributes){
-
+            controller: ['$scope', emailEditorCtrl],
+            controllerAs: 'ctrl',
+            link: function(scope:IEMailScope, elemetn, attributes, ctrl){
+                console.log(scope)
             }
         };
     }
